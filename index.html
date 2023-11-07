@@ -18,11 +18,11 @@
         <div class = "calcButton" id="button8" onclick="appendNumber(8)">8</div>
         <div class = "calcButton" id="button9" onclick="appendNumber(9)">9</div>
         <div class = "calcButton" id="button0" onclick="appendNumber(0)">0</div>
-        <div class = "calcButton" id="buttonAdd">+</div>
-        <div class = "calcButton" id="buttonSubtract">-</div>
-        <div class = "calcButton" id="buttonMultiply">*</div>
-        <div class = "calcButton" id="buttonDivide">/</div>
-        <div class = "calcButton" id="buttonClear">C</div>
+        <div class = "calcButton" id="buttonAdd" onclick="changeOperand('+')">+</div>
+        <div class = "calcButton" id="buttonSubtract" onclick="changeOperand('-')">-</div>
+        <div class = "calcButton" id="buttonMultiply" onclick="changeOperand('*')">*</div>
+        <div class = "calcButton" id="buttonDivide" onclick="changeOperand('/')">/</div>
+        <div class = "calcButton" id="buttonClear" onclick="clearValue()">C</div>
     </container>
     <script src="functions.js"></script>
 </body>
