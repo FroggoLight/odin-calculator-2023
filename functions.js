@@ -5,7 +5,13 @@ let appendValue = "0";
 let textItem = document.querySelector("#display");
 
 function appendNumber(num) {
-    appendValue = appendValue + (num.toString()); //remember to change to double then str
+    if (appendValue == "not specified") {
+        console.log("the current value is unassigned");
+        appendValue = (num.toString());
+    }
+    else {
+        appendValue = appendValue + (num.toString()); 
+    }
     appendValue = parseFloat(appendValue).toString();
     console.log(appendValue);
     updateDisplay();
@@ -15,10 +21,8 @@ function changeOperand(operandValue) {
     compute(operand);
     operand = operandValue;
     //console.log(operand);
-    appendValue = "0";
+    appendValue = "not specified";
     updateDisplay();
-
-    //create temp variable in case of = ?
 }
 
 function clearValue() {
@@ -30,6 +34,12 @@ function clearValue() {
 }
 
 function compute(currentOperand) {
+    if (appendValue == "not specified") {
+        console.log(appendValue);
+        appendValue = previousValue;
+        console.log(previousValue);
+        console.log(appendValue);
+    }
     switch(currentOperand) {
         case "+":
             previousValue = (parseFloat(previousValue) + parseFloat(appendValue)).toString();
@@ -49,24 +59,16 @@ function compute(currentOperand) {
             updateDisplay();
             break;
         default:
-            //console.log("previous operand was" + currentOperand);
+            console.log("previous operand was" + currentOperand + "(used for debugging and laziness idk placeholder here doesnt work)");
     }
     console.log(previousValue);
 }
 
 function updateDisplay() {
-    if (appendValue == "0" || operand == "") {
+    if (operand == "" || appendValue == "not specified") {
         textItem.textContent = previousValue;
-    } else {
+    } 
+    else {
         textItem.textContent = appendValue;
     }
 }
-
-
-//appendNumber("1");
-
-//if second value does not exist when pressing operand, do nothing, else evaluate 
-//function addValues add firstValue while operand is empty, and add secondValue if operand exists
-//if 
-
-//update screen num based on if operand exists
