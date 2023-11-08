@@ -9,9 +9,12 @@ function appendNumber(num) {
 }
 
 function changeOperand(operandValue) {
-    compute();
+    compute(operand);
     operand = operandValue;
-    console.log(operand);
+    //console.log(operand);
+    appendValue = "0";
+
+    //create temp variable in case of = ?
 }
 
 function clearValue() {
@@ -21,26 +24,28 @@ function clearValue() {
     console.log("clear");
 }
 
-function compute() {
-    switch(operand) {
+function compute(currentOperand) {
+    switch(currentOperand) {
         case "+":
             previousValue = (parseFloat(previousValue) + parseFloat(appendValue)).toString();
-            console.log(previousValue);
             break;
         case "-":
-            console.log((parseFloat(previousValue) - parseFloat(appendValue)).toString());
+            previousValue = (parseFloat(previousValue) - parseFloat(appendValue)).toString();
             break;
         case "*":
-            console.log((parseFloat(previousValue) * parseFloat(appendValue)).toString());
+            previousValue = (parseFloat(previousValue) * parseFloat(appendValue)).toString();
             break;
         case "/":
-            console.log((parseFloat(previousValue) / parseFloat(appendValue)).toString());
+            (parseFloat(appendValue) == 0) ? previousValue = "gg" : previousValue = (parseFloat(previousValue) / parseFloat(appendValue)).toString();
+            break;
+        case "=":
+            compute(operand);
             break;
         default:
-            console.log("what");
+            console.log("previous operand was" + currentOperand);
     }
-
-    appendValue = "0";
+    console.log(previousValue);
+    operand = "";
 }
 
 
