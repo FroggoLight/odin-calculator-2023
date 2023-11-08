@@ -2,10 +2,13 @@ let previousValue = "0";
 let operand = "+";
 let appendValue = "0";
 
+let textItem = document.querySelector("#display");
+
 function appendNumber(num) {
     appendValue = appendValue + (num.toString()); //remember to change to double then str
     appendValue = parseFloat(appendValue).toString();
     console.log(appendValue);
+    updateDisplay();
 }
 
 function changeOperand(operandValue) {
@@ -13,6 +16,7 @@ function changeOperand(operandValue) {
     operand = operandValue;
     //console.log(operand);
     appendValue = "0";
+    updateDisplay();
 
     //create temp variable in case of = ?
 }
@@ -22,6 +26,7 @@ function clearValue() {
     operand = "+";
     appendValue = "0";
     console.log("clear");
+    updateDisplay();
 }
 
 function compute(currentOperand) {
@@ -40,12 +45,21 @@ function compute(currentOperand) {
             break;
         case "=":
             compute(operand);
+            operand = "";
+            updateDisplay();
             break;
         default:
-            console.log("previous operand was" + currentOperand);
+            //console.log("previous operand was" + currentOperand);
     }
     console.log(previousValue);
-    operand = "";
+}
+
+function updateDisplay() {
+    if (appendValue == "0" || operand == "") {
+        textItem.textContent = previousValue;
+    } else {
+        textItem.textContent = appendValue;
+    }
 }
 
 

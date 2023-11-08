@@ -1,6 +1,37 @@
-.calcButton {
-    width: 30px;
-    height: 30px;
+#mainFrame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#calculatorFrame {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+}
+
+
+#display {
+    width: 99%;
+    height: 100%;
     border: 1px solid black;
+    text-align: right;
+}
+
+#buttonDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 480px;
+    /*border: 1px solid black; */
+}
+
+.calcButton {
+    width: 24.5%;
+    height: 25%;
+    border: 1px solid black; 
     text-align: center;
+    flex: 0 0 auto;
 }
